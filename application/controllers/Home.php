@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller { // Controller name
 
-      //change made here
+      //change made here and here
 	public function index($category_id = 0)
 	{
        
