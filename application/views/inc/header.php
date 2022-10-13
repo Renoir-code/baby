@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <?php foreach($categories as $category):?>
-          <a class="dropdown-item" href="<?=base_url('category/'.$category->id)?>"><?=$category->title ?> </a>
+          <a class="dropdown-item" href="<?=base_url('category/'.$category->id)?>"><?=$category->title?> </a>
          <?php endforeach;?>
         </div>
       </li>

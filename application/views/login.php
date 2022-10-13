@@ -23,10 +23,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                <?=form_close()?>
                <div class="row">
                 <div class="col-12">
-
+                <a class="btn btn-outline-success mt-4" href="<?=base_url('home/register') ?>">Register</a>
                 </div>
                </div>
-               <a class="btn btn-outline-success mt-4" href="<?=base_url('home/register') ?>">Register</a>
+               
         </div>
         </div>
     </div>
