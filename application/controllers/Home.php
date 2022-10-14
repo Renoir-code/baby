@@ -56,43 +56,42 @@ class Home extends CI_Controller { // Controller name
     public function register(){
         $viewData =[];
 
-        $this->load->library('form_validation');
         $this->load->helper('form');
+        $this->load->library('form_validation');
+       
 
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]');
-        $this->form_validation->set_rules('first_name', 'First Name', 'required|trim|min_length[2]|max_length[50');
-        $this->form_validation->set_rules('last_name', 'Last Name', 'required|trim|min_length[2]|max_length[50');
-        $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[4]|max_length[50');
+        $this->form_validation->set_rules('first_name', 'First Name', 'required|trim|min_length[2]|max_length[50]');
+        $this->form_validation->set_rules('last_name', 'Last Name', 'required|trim|min_length[2]|max_length[50]');
+        $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[4]|max_length[50]');
         $this->form_validation->set_rules('passconf', 'Password Confirm', 'required|trim|matches[password]');
       
         if ($this->form_validation->run()){
              
-            $data =[
+            $data = [
                 'email'=> $this->input->post('email'),
                 'first_name'=>$this->input->post('first_name'),
                 'last_name'=>$this->input->post('last_name'),
-                'password'=> md5(sha1($this->input->post('password'))),
+                'password'=> md5(sha1($this->input->post('password')))
             ];
 
             $insert = $this->db->insert('users',$data);
+            
         if($insert){
             $newdata=[
-              'logged' => true,
-              'user_id' => $this->db->insert_id(),
-              'email'=> $data['email'],
-              'first_name'=> $data['first_name'],
-              'last_name'=> $data['last_name']
+              'logged' =>       true,
+              'user_id' =>      $this->db->insert_id(),
+              'email'=>         $data['email'],
+              'first_name'=>    $data['first_name'],
+              'last_name'=>     $data['last_name']
             ];
             $this->session->set_userdata($newdata);
             $viewData['success'] = true;
-        }
-            
+        } 
     }
-
-        $this->load->view('inc/header');
-        $this->load->view('register',$viewData);
-        $this->load->view('inc/footer');
-
+    $this->load->view('inc/header');
+    $this->load->view('register',$viewData);
+    $this->load->view('inc/footer');
     }
 
 

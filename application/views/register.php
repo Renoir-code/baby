@@ -10,10 +10,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="row">
             <div class="col-6 offset-md-3 text-center">
             <h1 class="mb-3">Register</h1>
-            <?= validation_errors()?> <!-- shows form validation errors after submitting-->
-              <?=form_open(base_url('home/login'))?> <!-- grabs value from url-->
+            <?if(isset($success) && $success):?>
+                 <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-success">
+                          Registration Completed Successfully. <br>
+                          <a href="<?=base_url()?>">Home</a>
+                        </div>
+                    </div>
+                 </div>
+                <?else:?>
+            <?=validation_errors()?> <!-- shows form validation errors after submitting-->
+              <?=form_open(base_url('home/register'))?> <!-- grabs value from url-->
                 <div class="form-group">
-                    <input type="email" class="form-control" required id="email" 
+                    <input type="email" class="form-control" required 
                     name="email" value="<?php set_value('email')?>" placeholder="Email Address" >
                 </div>
                     
@@ -37,14 +47,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     name="passconf" value="<?php set_value('passconf')?>" placeholder="Confirm Password" >
 
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                <button type="submit" class="btn btn-primary btn-block">Register User</button>
                <?=form_close()?>
                <div class="row">
                 <div class="col-12">
-                <a class="btn btn-outline-success mt-4" href="<?=base_url('home/login') ?>">Back to Login</a>
+                <a class="btn btn-outline-success mt-4" href="<?=base_url('home/login')?>">Back to Login</a>
                 </div>
                </div>
-               
+               <?endif;?>
         </div>
         </div>
     </div>
