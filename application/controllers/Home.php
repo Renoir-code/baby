@@ -113,7 +113,7 @@ class Home extends CI_Controller { // Controller name
                     $this->db->insert('categories', $insertData); // inserting into db name , $variable with all data
 
             }
-               
+            
              $this->load->view('inc/header');
              $this->load->view('add_category',$viewData);
              $this->load->view('inc/footer');
